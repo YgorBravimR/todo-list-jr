@@ -1,19 +1,22 @@
 @import '../../../styles/variables';
-
+@import '../../../styles/mixins';
 
 .wrapper {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 1rem;
+
   .checkbox {
     --brdr: #B0BBD1;
     --brdr-actv: #0796D3;
     --brdr-hovr: #b6bce0;
     --dur: calc((var(--size, 2) / 2) * 0.6s);
+    cursor: pointer;
     display: inline-block;
     width: calc(var(--size, 1) * 22px);
     position: relative;
     scale: 1.1;
+    flex-shrink: 0; // Prevent checkbox from shrinking
   }
 
   .checkbox:after {
@@ -34,7 +37,7 @@
     cursor: pointer;
     background-color: $background-color;
     border-radius: calc(var(--size, 1) * 4px);
-    border: calc(var(--newBrdr, var(--size, 2)) * 1px) solid;
+    border: 1px solid;
     color: var(--newBrdrClr, var(--brdr));
     outline: none;
     margin: 0;
@@ -81,6 +84,20 @@
     display: block;
     height: 100%;
     width: 100%;
+  }
+
+  .label {
+    color: $foreground-color;
+    word-break: break-word;
+    flex-grow: 1;
+    flex-shrink: 1;
+    white-space: normal;
+    text-align: left;
+  }
+
+  .checkedLabel {
+    color: $accent-foreground-color;
+    text-decoration: line-through;
   }
 
 }

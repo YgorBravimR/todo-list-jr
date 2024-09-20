@@ -1,19 +1,33 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .wrapper {
   background-color: $background-color;
   color: $foreground-color;
   padding: 1.5rem 0;
-  border-bottom: 1px solid #D7DDE9;
+  border-bottom: 1px solid $border-color;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: center;
   align-items: center;
   margin: 0 3.5rem;
 
+  @include respond-to('mobile') {
+    margin: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0;
+  }
+
   h2 {
     font-size: 1.5rem;
+    font-weight: 600;
     justify-self: center;
+
+    @include respond-to('mobile') {
+      font-size: 1rem;
+    }
   }
 
   span {

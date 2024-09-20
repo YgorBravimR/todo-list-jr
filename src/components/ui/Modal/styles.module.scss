@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+@import '../../../styles/mixins.scss';
 
 .overlay {
   position: fixed;
@@ -16,7 +17,7 @@
 
 .content {
   background-color: $background-color;
-  padding: 32px;
+  padding: 2rem;
   min-width: 450px;
   border-radius: 16px;
   position: relative;
@@ -24,6 +25,13 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
+
+  @include respond-to('mobile') {
+    width: 100vw;
+    height: 100vh;
+    min-width: 0;
+    padding: 1rem;
+  }
 
   p {
     line-height: 1.2rem;
@@ -40,4 +48,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
+
+  @include respond-to('mobile') {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }

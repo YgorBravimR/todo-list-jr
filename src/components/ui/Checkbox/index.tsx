@@ -1,7 +1,6 @@
 "use client";
-import React from "react";
-import styles from "./styles.module.scss";
 import { CheckIcon } from "../icons";
+import styles from "./styles.module.scss";
 
 interface Props {
   label?: string;
@@ -23,7 +22,13 @@ export const Checkbox = ({ label, isChecked, setIsChecked }: Props) => {
         </svg>
       </span>
       <CheckIcon stroke="#0796D3" />
-      <label>{label}</label>
+      {label && (
+        <span
+          className={`${styles.label} ${isChecked ? styles.checkedLabel : ""}`}
+        >
+          {label}
+        </span>
+      )}
     </div>
   );
 };

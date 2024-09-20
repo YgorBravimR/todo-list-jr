@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 import { Modal } from "../ui/Modal";
@@ -15,11 +15,25 @@ interface Props {
   id?: number;
 }
 
+const TODOS_KEY = "todos-localstorage-key";
+
 export const TodoList = ({}: Props) => {
   const [todos, setTodos] = useState<TodoItem[]>([]);
   const [newTodo, setNewTodo] = useState("");
   const [isNewTodoModalOpen, setIsNewTodoModalOpen] = useState(false);
   const [selectedTodoId, setSelectedTodoId] = useState<string | null>(null);
+
+  useEffect(() => {
+    const storedTodos = localStorage.getItem(TODOS_KEY);
+    if (storedTodos) {
+      setTodos(JSON.parse(storedTodos));
+    }
+  }, []);
+
+  const updateLocalStorage = (updatedTodos: TodoItem[]) => {
+    setTodos(updatedTodos);
+    localStorage.setItem(TODOS_KEY, JSON.stringify(updatedTodos));
+  };
 
   const checkedTodos = useMemo(
     () => todos.filter((item) => item.isChecked),
@@ -31,8 +45,8 @@ export const TodoList = ({}: Props) => {
   );
 
   const handleRemoveTodo = (id: string) => {
-    const newTodos = todos.filter((item) => item.id !== id);
-    setTodos(newTodos);
+    const updatedTodos = todos.filter((item) => item.id !== id);
+    updateLocalStorage(updatedTodos);
     setSelectedTodoId(null);
   };
 
@@ -45,28 +59,28 @@ export const TodoList = ({}: Props) => {
       isChecked: false,
     };
 
-    setTodos([...todos, newTodoItem]);
+    const updatedTodos = [...todos, newTodoItem];
+    updateLocalStorage(updatedTodos);
     setNewTodo("");
     setIsNewTodoModalOpen(false);
   };
 
   const handleToggleTodo = (id: string) => {
-    const newTodos = todos.map((item) => {
+    const updatedTodos = todos.map((item) => {
       if (item.id === id) {
         return {
           ...item,
           isChecked: !item.isChecked,
         };
       }
-
       return item;
     });
 
-    setTodos(newTodos);
+    updateLocalStorage(updatedTodos);
   };
 
   return (
-    <main className={styles.wrapper}>
+    <div className={styles.wrapper}>
       <div className={styles.listContainer}>
         <p className={styles.sectionTitle}>
           {uncheckedTodos.length === 0
@@ -129,7 +143,7 @@ export const TodoList = ({}: Props) => {
         isOpen={Boolean(selectedTodoId)}
         onClose={() => setSelectedTodoId(null)}
         onConfirm={() => handleRemoveTodo(selectedTodoId as string)}
-        title="Nova tarefa"
+        title="Deletar tarefa"
         closeText="Cancelar"
         confirmText="Deletar"
         confirmButtonVariant="secondary"
@@ -138,6 +152,6 @@ export const TodoList = ({}: Props) => {
           <p>Tem certeza que você deseja deletar essa tarefa?</p>
         </div>
       </Modal>
-    </main>
+    </div>
   );
 };

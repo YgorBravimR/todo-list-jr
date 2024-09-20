@@ -24,8 +24,8 @@ export const CheckIcon = (props: SVGProps<SVGSVGElement>) => {
 export const TrashIcon = (props: SVGProps<SVGSVGElement>) => {
   return (
     <svg
-      width={props.width ?? "24"}
-      height={props.height ?? "24"}
+      width={props.width ?? "26"}
+      height={props.height ?? "26"}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
       {...props}
