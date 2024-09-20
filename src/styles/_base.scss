@@ -24,6 +24,10 @@ font: inherit;
 vertical-align: baseline;
 }
 
+html, body {
+height: 100%;
+}
+
 html {
 font-size: 100%;
 scroll-behavior: smooth;
@@ -31,11 +35,16 @@ scroll-behavior: smooth;
 
 body {
 font-size: $font-size-base;
-color: $font-color;
+color: $foreground-color;
 background-color: $background-color;
 line-height: $line-height-base;
 min-height: 100vh;
+min-width: 100vw;
+display: flex;
+flex-direction: column;
 }
+
+
 
 a {
 text-decoration: none;
@@ -48,13 +57,13 @@ text-decoration: underline;
 }
 
 h1, h2, h3, h4, h5, h6 {
+letter-spacing: -0.02em;
 font-weight: 600;
-margin-bottom: $spacing-medium;
 }
 
 p {
-margin-bottom: $spacing-medium;
 line-height: 1.8;
+letter-spacing: -0.02em;
 }
 
 .container {
@@ -67,16 +76,18 @@ padding: 0 $spacing-medium;
 
 button {
 cursor: pointer;
-background-color: $primary-color;
-color: #fff;
+background-color: transparent;
 border: none;
 padding: $spacing-small $spacing-medium;
 border-radius: 4px;
 transition: background-color 0.3s;
-
-&:hover {
-background-color: darken($primary-color, 10%);
 }
+
+ul,
+ol {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
 input, select, textarea {

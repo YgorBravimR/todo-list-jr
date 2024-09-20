@@ -1,0 +1,30 @@
+@import '../../../styles/variables.scss';
+
+.wrapper {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px dashed #D7DDE9;
+  padding: 1rem;
+
+  &:hover {
+    border: 1px solid #F7F9FD;
+    background-color: #F7F9FD;
+  }
+
+  button {
+    > svg {
+      stroke: #B0BBD1;
+      fill: transparent;
+    }
+    &:hover {
+      > svg {
+        stroke: $secondary-color;
+      }
+    }
+  }
+}
+

@@ -1,0 +1,70 @@
+@import '../../../styles/variables';
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: background-color 0.2s, color 0.2s;
+  cursor: pointer;
+  outline: none;
+  padding: 0;
+  line-height: 1.2;
+  &:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(15, 23, 42, 1); // Ring focus effect
+  }
+  &:disabled {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+
+  &.default {
+    background: $gradient-primary-color;
+    color: $background-color;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &.secondary {
+    background: $gradient-secondary-color;
+    color: $background-color;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &.neutral {
+    background: $neutral-color;
+    color: $foreground-color;
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+
+  &.default {
+    padding: 16px 24px;
+  }
+
+  &.sm {
+    height: 32px;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+  }
+
+  &.lg {
+    height: 40px;
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+
+  &.icon {
+    height: 36px;
+    width: 36px;
+    padding: 0;
+  }
+}

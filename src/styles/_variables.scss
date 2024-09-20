@@ -1,10 +1,16 @@
-$primary-color: #3498db;
+$primary-color: #0796D3;
 $primary-color-light: #53C0F0;
 $secondary-color: #D30707;
 $secondary-color-light: #F05353;
-$background-color: #f0f0f0;
-$font-color: #000000;
-$accent-font-color: #0000008A;
+$neutral-color: #E7EEFB;
+$gray-color: #B0BBD1;
+$background-color: #ffffff;
+$accent-background-color: #f0f0f0;
+$foreground-color: #000000;
+$accent-foreground-color: #888787;
+
+$gradient-primary-color: linear-gradient(to right, $primary-color, $primary-color-light);
+$gradient-secondary-color: linear-gradient(to right, $secondary-color, $secondary-color-light);
 
 $font-size-base: 16px;
 $line-height-base: 1.6;

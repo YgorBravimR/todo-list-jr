@@ -1,5 +1,14 @@
 @import '../../styles/variables';
 
-.p {
-  background-color: $primary-color;
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $background-color;
+  color: $foreground-color;
+  text-align: center;
+  padding: 1.5rem;
+  height: 100%;
+  flex-grow: 1;
+  overflow: hidden;
 }

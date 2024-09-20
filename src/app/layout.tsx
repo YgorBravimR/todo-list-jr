@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter_Tight } from "next/font/google";
 import "../styles/globals.scss";
+import { Header } from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Ygor Bravim | Test",
@@ -20,7 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={font.className}>
-      <body>{children}</body>
+      <body>
+        <div id="modal-root" />
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
